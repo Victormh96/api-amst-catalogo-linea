@@ -3,17 +3,22 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+//Portada
+Route::get('/portada-inicio', [App\Http\Controllers\User\PortadaController::class, 'portadainicio']);
+Route::get('/portada-registro', [App\Http\Controllers\User\PortadaController::class, 'portadaregistro']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Categorias
+Route::get('/tag', [App\Http\Controllers\User\CategoriaController::class, 'tag']);
+Route::get('/categoria/{slug}', [App\Http\Controllers\User\CategoriaController::class, 'categoria']);
+Route::get('/categoria-destacado', [App\Http\Controllers\User\CategoriaController::class, 'categoriadestacado']);
+Route::post('/categoria-click/{id}', [App\Http\Controllers\User\CategoriaController::class, 'categoriaclick']);
+
+//catalogo
+Route::get('/catalogo/{slug}', [App\Http\Controllers\User\CuentaController::class, 'catalogocategoria']);
+
+//cuenta
+Route::get('/cuenta/{slug}', [App\Http\Controllers\User\CuentaController::class, 'cuenta']);
+
+//registro
+Route::post('/registro-servicio', [App\Http\Controllers\User\RegistroServicioController::class, 'store']);
+Route::post('/registro-empresa', [App\Http\Controllers\User\RegistroEmpresaController::class, 'store']);
