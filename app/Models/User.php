@@ -1,5 +1,5 @@
 <?php
-//php artisan make:model Sesion
+//php artisan make:model nombre-modelo
 
 namespace App\Models;
 

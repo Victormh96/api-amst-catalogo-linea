@@ -20,11 +20,11 @@ class CategoriaController extends Controller
 
     public function tag()
     {
-        $rubro = Rubro::where('estado', True)
+        $tag = Rubro::where('estado', True)
         ->orderBy('nombre_rubro', 'ASC')
         ->get();
         
-        return response()->json([$rubro, 'message' => 'Listado Rubro'], 200);
+        return response()->json([$tag, 'message' => 'Listado Tag'], 200);
     }
 
     public function categoriadestacado()
@@ -41,13 +41,13 @@ class CategoriaController extends Controller
         ->limit(6)
         ->get();
 
-        return response()->json([$profesional, $empresa, 'message' => 'Listado Rubro Destacado'], 200);
+        return response()->json([$profesional, $empresa, 'message' => 'Listado Destacado'], 200);
     }
 
     public function categoriaclick($id)
     {
-        $rubro = Rubro::find($id)->increment('click');
+        $click = Rubro::find($id)->increment('click');
 
-        return response()->json(['message' => 'Se sumo con exito'],200);
+        return response()->json(['message' => 'Ok'], 200);
     }
 }

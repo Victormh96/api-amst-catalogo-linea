@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Portada;
 use App\Models\Cuenta;
 use App\Models\Contacto;
 use App\Models\Servicio;
@@ -15,8 +14,9 @@ class RegistroEmpresaController extends Controller
 {
     public function store(Request $request)
     { 
-          //Transaccion
-          DB::transaction(function () use ($request) {
+        //Transaccion
+        DB::transaction(function () use ($request) {
+
         //Guardando
         $registro = new Cuenta();
         $registro->nombre_cuenta = $request->name;
