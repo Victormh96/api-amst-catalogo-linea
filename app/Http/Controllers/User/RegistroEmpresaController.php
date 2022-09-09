@@ -27,9 +27,9 @@ class RegistroEmpresaController extends Controller
         $registro->longitud = $request->longitud;
         $registro->direccion = $request->direccion;
         $registro->horario = $request->horario;
-        $registro->local = true;
+        $registro->local = $request->local;
         $registro->servicio_domicilio = $request->servicioDomicilio;
-        $registro->slug = Str::slug($request->name);
+        $registro->slug = Str::slug($request->name).'-'.substr(md5(time()), 0, 4);
 
         //Imagen
         if($request->imagen):

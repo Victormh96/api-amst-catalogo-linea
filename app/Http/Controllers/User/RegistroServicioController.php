@@ -29,7 +29,7 @@ class RegistroServicioController extends Controller
         $registro->direccion = $request->direccion;
         $registro->local = $request->local;
         $registro->servicio_domicilio = $request->servicioDomicilio;
-        $registro->slug = Str::slug($request->name);
+        $registro->slug = Str::slug($request->name).'-'.substr(md5(time()), 0, 4);
         $registro->id_genero = $request->genero;
 
         //Imagen
@@ -37,7 +37,6 @@ class RegistroServicioController extends Controller
             $ruta_imagen = $request['imagen']->store('cuenta','public');
             $registro->foto = $ruta_imagen;
         endif;
-
         $registro->save();
 
         //telefono

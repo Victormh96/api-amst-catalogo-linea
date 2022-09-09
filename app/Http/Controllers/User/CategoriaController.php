@@ -8,6 +8,15 @@ use App\Http\Controllers\Controller;
 
 class CategoriaController extends Controller
 {
+    public function tag()
+    {
+        $tag = Rubro::where('estado', True)
+        ->orderBy('nombre_rubro', 'ASC')
+        ->get();
+        
+        return response()->json([$tag, 'message' => 'Listado Tag'], 200);
+    }
+
     public function categoria($slug)
     {
         $rubro = Rubro::where('estado', True)
@@ -16,15 +25,6 @@ class CategoriaController extends Controller
         ->get();
 
         return response()->json([$rubro, 'message' => 'Listado Rubro'], 200);
-    }
-
-    public function tag()
-    {
-        $tag = Rubro::where('estado', True)
-        ->orderBy('nombre_rubro', 'ASC')
-        ->get();
-        
-        return response()->json([$tag, 'message' => 'Listado Tag'], 200);
     }
 
     public function categoriadestacado()

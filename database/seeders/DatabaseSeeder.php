@@ -1,5 +1,5 @@
 <?php
-//php artisan make:seeder ProfessionSeeder
+//php artisan make:seeder nombre-seeder
 
 namespace Database\Seeders;
 
