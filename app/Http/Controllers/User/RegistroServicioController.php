@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class RegistroServicioController extends Controller
 {
-    public function store(Request $request)
+    public function guardar(Request $request)
     { 
         //Transaccion
         DB::transaction(function () use ($request) {
