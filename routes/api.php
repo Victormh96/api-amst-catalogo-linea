@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+Route::group(['middleware' => ['cors']], function () {
+
 //Portada
 Route::get('/portada-inicio', [App\Http\Controllers\User\PortadaController::class, 'portadainicio']);
 Route::get('/portada-registro', [App\Http\Controllers\User\PortadaController::class, 'portadaregistro']);
@@ -22,3 +25,5 @@ Route::get('/cuenta/{slug}', [App\Http\Controllers\User\CuentaController::class,
 //registro
 Route::post('/registro-servicio', [App\Http\Controllers\User\RegistroServicioController::class, 'guardar']);
 Route::post('/registro-empresa', [App\Http\Controllers\User\RegistroEmpresaController::class, 'guardar']);
+
+});
