@@ -17,7 +17,7 @@ class CuentaController extends Controller
             return $query->where('slug', $slug);
         })->get();
         
-        $cuenta = Cuenta::where('estado', True)
+        $cuenta = Cuenta::where('estado', False)
         ->whereIn('id', $servicio->pluck('id_cuenta'))
         ->with(['genero', 'servicio.rubro'])
         ->with('contacto', function ($query) {
@@ -29,7 +29,7 @@ class CuentaController extends Controller
 
     public function cuenta($slug)
     {
-        $cuenta = Cuenta::where('estado', True)
+        $cuenta = Cuenta::where('estado', False)
         ->where('slug', $slug)
         ->with(['genero', 'contacto', 'galeria', 'servicio.rubro'])
         ->get();
