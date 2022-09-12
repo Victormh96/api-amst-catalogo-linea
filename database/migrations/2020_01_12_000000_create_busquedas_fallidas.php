@@ -8,16 +8,15 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('detalle_contacto', function (Blueprint $table) {
+        Schema::create('busqueda_fallida', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion')->unique();
-            $table->string('clase');
+            $table->string('busqueda');
             $table->timestamps();
         });
     }
-
     public function down()
     {
-        Schema::dropIfExists('detalle_contacto');
+        Schema::dropIfExists('busqueda_fallida');
     }
+
 };

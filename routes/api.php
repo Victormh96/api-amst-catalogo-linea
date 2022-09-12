@@ -20,5 +20,8 @@ Route::get('/catalogo/{slug}', [App\Http\Controllers\User\CuentaController::clas
 Route::get('/cuenta/{slug}', [App\Http\Controllers\User\CuentaController::class, 'cuenta']);
 
 //registro
-Route::post('/registro-servicio', [App\Http\Controllers\User\RegistroServicioController::class, 'store']);
-Route::post('/registro-empresa', [App\Http\Controllers\User\RegistroEmpresaController::class, 'store']);
+Route::post('/registro-servicio', [App\Http\Controllers\User\RegistroServicioController::class, 'guardar']);
+Route::post('/registro-empresa', [App\Http\Controllers\User\RegistroEmpresaController::class, 'guardar']);
+
+
+Route::post('/busqueda-fallida', [App\Http\Controllers\User\BusquedaFallidaController::class, 'fallido']);
