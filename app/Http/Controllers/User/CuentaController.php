@@ -32,7 +32,7 @@ class CuentaController extends Controller
         $cuenta = Cuenta::where('estado', True)
         ->where('slug', $slug)
         ->with(['genero', 'contacto.detallecontacto', 'galeria', 'servicio.rubro'])
-        ->get();
+        ->first();
 
         return response()->json([$cuenta, 'message' => 'Listado Cuenta'], 200);
     }
