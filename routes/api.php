@@ -22,3 +22,6 @@ Route::get('/cuenta/{slug}', [App\Http\Controllers\User\CuentaController::class,
 //registro
 Route::post('/registro-servicio', [App\Http\Controllers\User\RegistroServicioController::class, 'guardar']);
 Route::post('/registro-empresa', [App\Http\Controllers\User\RegistroEmpresaController::class, 'guardar']);
+
+
+Route::post('/busqueda-fallida', [App\Http\Controllers\User\BusquedaFallidaController::class, 'fallido']);
