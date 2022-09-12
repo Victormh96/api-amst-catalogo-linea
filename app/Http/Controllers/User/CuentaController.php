@@ -17,11 +17,11 @@ class CuentaController extends Controller
             return $query->where('slug', $slug);
         })->get();
         
-        $cuenta = Cuenta::where('estado', False)
+        $cuenta = Cuenta::where('estado', True)
         ->whereIn('id', $servicio->pluck('id_cuenta'))
         ->with(['genero', 'servicio.rubro'])
         ->with('contacto', function ($query) {
-            $query->where('id', 6);
+            $query->where('id_detalle_contacto', 6);
         })->get();       
 
         return response()->json([$cuenta, 'message' => 'Listado Catalogo'], 200);
@@ -29,7 +29,7 @@ class CuentaController extends Controller
 
     public function cuenta($slug)
     {
-        $cuenta = Cuenta::where('estado', False)
+        $cuenta = Cuenta::where('estado', True)
         ->where('slug', $slug)
         ->with(['genero', 'contacto', 'galeria', 'servicio.rubro'])
         ->get();
