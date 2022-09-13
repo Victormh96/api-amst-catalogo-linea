@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('detalle_contacto', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion')->unique();
-            $table->string('clase');
+            $table->string('icon');
             $table->timestamps();
         });
     }

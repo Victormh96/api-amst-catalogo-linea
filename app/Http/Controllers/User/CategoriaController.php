@@ -10,7 +10,7 @@ class CategoriaController extends Controller
 {
     public function tag()
     {
-        $tag = Rubro::where('estado', True)
+        $tag = Rubro::where('estado', true)
         ->orderBy('nombre_rubro', 'ASC')
         ->get();
         
@@ -19,7 +19,7 @@ class CategoriaController extends Controller
 
     public function categoria($slug)
     {
-        $rubro = Rubro::where('estado', True)
+        $rubro = Rubro::where('estado', true)
         ->whereRelation('categoria', 'slug', $slug)
         ->orderBy('nombre_rubro', 'ASC')
         ->get();
@@ -29,13 +29,13 @@ class CategoriaController extends Controller
 
     public function categoriadestacado()
     {
-        $profesional = Rubro::where('estado', True)
+        $profesional = Rubro::where('estado', true)
         ->where('id_categoria', 1)
         ->orderBy('click', 'DESC')
         ->limit(6)
         ->get();
 
-        $empresa = Rubro::where('estado', True)
+        $empresa = Rubro::where('estado', true)
         ->where('id_categoria', 2)
         ->orderBy('click', 'DESC')
         ->limit(6)
@@ -46,7 +46,8 @@ class CategoriaController extends Controller
 
     public function categoriaclick($id)
     {
-        $click = Rubro::find($id)->increment('click');
+        $click = Rubro::find($id)
+        ->increment('click');
 
         return response()->json(['message' => 'Ok'], 200);
     }

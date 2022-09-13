@@ -13,56 +13,56 @@ class DetalleContactoSeeder extends Seeder
     {
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'Facebook',
-            'clase' => 'fab fa-facebook-square',
+            'icon' => 'fab fa-facebook-square',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'Instagram',
-            'clase' => 'fab fa-instagram',
+            'icon' => 'fab fa-instagram',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'Twitter',
-            'clase' => 'fab fa-twitter',
+            'icon' => 'fab fa-twitter',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'LinkedIn',
-            'clase' => 'fab fa-linkedin',
+            'icon' => 'fab fa-linkedin',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'WhatsApp',
-            'clase' => 'fab fa-whatsapp',
+            'icon' => 'fab fa-whatsapp',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'Web',
-            'clase' => 'fa-solid fa-globe',
+            'icon' => 'fa-solid fa-globe',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'Teléfono',
-            'clase' => 'fa-solid fa-mobile-screen-button',
+            'icon' => 'fa-solid fa-mobile-screen-button',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('detalle_contacto')->insert([
             'descripcion' => 'Teléfono Fijo',
-            'clase' => 'fa fa-phone',
+            'icon' => 'fa fa-phone',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

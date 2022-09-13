@@ -170,9 +170,9 @@ class RubroSeeder extends Seeder
         ]);
         
         DB::table('rubro')->insert([
-            'nombre_rubro' => 'Laboratorio Clinico',
+            'nombre_rubro' => 'Laboratorio',
             'slug' => Str::slug('laboratorio'),
-            'imagen' => ('/rubro/laboratorio-clinico.png'),
+            'imagen' => ('/rubro/laboratorio.png'),
             'click' => 0,
             'tags' => 'laboratorio clinico,examen de sangre',
             'estado' => true,
@@ -183,8 +183,8 @@ class RubroSeeder extends Seeder
 
         DB::table('rubro')->insert([
             'nombre_rubro' => 'Hospitales',
-            'slug' => Str::slug('hospital'),
-            'imagen' => ('/rubro/hospital.png'),
+            'slug' => Str::slug('hospitales'),
+            'imagen' => ('/rubro/hospitales.png'),
             'click' => 0,
             'tags' => 'hospitales,cirugias, clinicas, Dolor de cabeza',
             'estado' => true,
@@ -194,9 +194,9 @@ class RubroSeeder extends Seeder
         ]); 
 
         DB::table('rubro')->insert([
-            'nombre_rubro' => 'Mecánica Automotriz',
-            'slug' => Str::slug('taller-mecanico'),
-            'imagen' => ('/rubro/mecanica-automotriz.png'),
+            'nombre_rubro' => 'Mecánica',
+            'slug' => Str::slug('mecanica'),
+            'imagen' => ('/rubro/mecanica.png'),
             'click' => 0,
             'tags' => 'Mecánica Automotriz,Taller Electrico,Talleres',
             'estado' => true,
@@ -219,7 +219,7 @@ class RubroSeeder extends Seeder
 
         DB::table('rubro')->insert([
             'nombre_rubro' => 'Artesanias',
-            'slug' => Str::slug('souvenir'),
+            'slug' => Str::slug('artesanias'),
             'imagen' => ('/rubro/souvenir.png'),
             'click' => 0,
             'tags' => 'recuerdos,artesanias,souvenir',
@@ -231,8 +231,8 @@ class RubroSeeder extends Seeder
 
         DB::table('rubro')->insert([
             'nombre_rubro' => 'Restaurantes',
-            'slug' => Str::slug('restaurante'),
-            'imagen' => ('/rubro/restaurante.png'),
+            'slug' => Str::slug('restaurantes'),
+            'imagen' => ('/rubro/restaurantes.png'),
             'click' => 0,
             'tags' => 'restaurante,comedor',
             'estado' => true,
@@ -242,8 +242,8 @@ class RubroSeeder extends Seeder
         ]); 
 
         DB::table('rubro')->insert([
-            'nombre_rubro' => 'Salones de Belleza',
-            'slug' => Str::slug('salones'),
+            'nombre_rubro' => 'Salon Belleza',
+            'slug' => Str::slug('salon-belleza'),
             'imagen' => ('/rubro/salon-belleza.png'),
             'click' => 0,
             'tags' => 'salones de belleza',
@@ -254,9 +254,9 @@ class RubroSeeder extends Seeder
         ]); 
 
         DB::table('rubro')->insert([
-            'nombre_rubro' => 'Reparacion de Celulares',
-            'slug' => Str::slug('reparaciones-celulares'),
-            'imagen' => ('/rubro/raparacion-celular.png'),
+            'nombre_rubro' => 'Reparaciones',
+            'slug' => Str::slug('reparaciones'),
+            'imagen' => ('/rubro/reparaciones.png'),
             'click' => 0,
             'tags' => 'Reparación de celulares',
             'estado' => true,
@@ -267,7 +267,7 @@ class RubroSeeder extends Seeder
 
         DB::table('rubro')->insert([
             'nombre_rubro' => 'Panaderias',
-            'slug' => Str::slug('panaderia'),
+            'slug' => Str::slug('panaderias'),
             'imagen' => ('/rubro/pasteleria.png'),
             'click' => 0,
             'tags' => 'panaderias,pastelerias,pasteles',
