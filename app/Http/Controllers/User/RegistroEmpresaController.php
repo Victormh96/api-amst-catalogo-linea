@@ -38,63 +38,82 @@ class RegistroEmpresaController extends Controller
 
         $registro->save();
 
-        // Saving
-        $contacto = new Contacto();
-
+        // Facebook
         if($request->facebook):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->facebook;
             $contacto->id_detalle_contacto = 1;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Instagram
         if($request->instagram):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->instagram;
             $contacto->id_detalle_contacto = 2;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Twitter
         if($request->twitter):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->twitter;
             $contacto->id_detalle_contacto = 3;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Linkedin
         if($request->linkedin):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->linkedin;
             $contacto->id_detalle_contacto = 4;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Whatsapp
         if($request->whatsapp):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->whatsapp;
             $contacto->id_detalle_contacto = 5;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Web
         if($request->pagweb):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->pagweb;
             $contacto->id_detalle_contacto = 6;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Phone
         if($request->telefonoFijo):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->telefonoFijo;
             $contacto->id_detalle_contacto = 7;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
+        // Mobile
         if($request->telefonoCelular):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->telefonoCelular;
             $contacto->id_detalle_contacto = 8;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
-
-        $contacto->save();
 
         // Saving
         $listaServicio = json_decode($request->servicios);
 
-        foreach( $listaServicio as $s){
+        foreach($listaServicio as $s){
             $servicio = new Servicio();
             $servicio->descripcion = $s->descripcion;
             $servicio->anios_experiencia = $s->experiencia;
