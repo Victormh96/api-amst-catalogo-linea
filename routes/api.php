@@ -8,6 +8,10 @@ Route::get('/portada-inicio', [App\Http\Controllers\User\InicioController::class
 Route::get('/portada-registro', [App\Http\Controllers\User\InicioController::class, 'portadaregistro']);
 Route::post('/busqueda-fallida', [App\Http\Controllers\User\InicioController::class, 'fallido']);
 
+// Publicidad
+Route::get('/publicidad', [App\Http\Controllers\User\PublicidadController::class, 'publicidad']);
+Route::post('/publicidad-click/{id}', [App\Http\Controllers\User\PublicidadController::class, 'publicidadclick']);
+
 // Categorias
 Route::get('/tag', [App\Http\Controllers\User\CategoriaController::class, 'tag']);
 Route::get('/categoria/{slug}', [App\Http\Controllers\User\CategoriaController::class, 'categoria']);

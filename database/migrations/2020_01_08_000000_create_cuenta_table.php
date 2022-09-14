@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('foto')->nullable()->default('cuenta/default.png');
             $table->string('latitud')->nullable();
             $table->string('longitud')->nullable();
-            $table->string('direccion')->nullable();
+            $table->string('direccion')->nullable()->default('Sin Localización');
             $table->string('horario')->nullable();
             $table->boolean('local')->nullable()->default(false);
             $table->boolean('servicio_domicilio')->nullable()->default(false);
