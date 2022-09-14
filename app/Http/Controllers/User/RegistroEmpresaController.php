@@ -5,10 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Models\Cuenta;
 use App\Models\Contacto;
 use App\Models\Servicio;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class RegistroEmpresaController extends Controller
 {
@@ -28,7 +28,7 @@ class RegistroEmpresaController extends Controller
         $registro->longitud = $request->longitud;
         $registro->direccion = $request->direccion;
         $registro->horario = $request->horario;
-        $registro->local = $request->local;
+        $registro->local = true;
         $registro->servicio_domicilio = $request->servicioDomicilio;      
 
         if($request->imagen):

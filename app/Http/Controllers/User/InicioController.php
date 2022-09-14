@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Portada;
 use Illuminate\Http\Request;
 use App\Models\BusquedaFallida;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class InicioController extends Controller
