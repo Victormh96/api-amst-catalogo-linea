@@ -10,7 +10,7 @@ class PublicidadController extends Controller
 {
     public function publicidad()
     {
-        $publicidad = Publicidad::select('id','imagen')
+        $publicidad = Publicidad::select('id','descripcion','imagen')
         ->get();
 
         return response()->json([$publicidad, 'message' => 'Listado Publicidad'], 200);
