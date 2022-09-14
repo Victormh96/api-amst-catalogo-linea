@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\BusquedaFallida;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class InicioController extends Controller
 {
@@ -24,7 +25,6 @@ class InicioController extends Controller
         $portada = Portada::select('imagen')
         ->where("ubicacion", "Registro")
         ->get();
-
         return response()->json([$portada, 'message' => 'Listado Portada'], 200);
     }
 
