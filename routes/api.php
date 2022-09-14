@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+
 // Portada
 Route::get('/portada-inicio', [App\Http\Controllers\User\InicioController::class, 'portadainicio']);
 Route::get('/portada-registro', [App\Http\Controllers\User\InicioController::class, 'portadaregistro']);
