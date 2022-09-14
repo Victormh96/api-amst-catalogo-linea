@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
 use App\Models\Portada;
 use Illuminate\Http\Request;
 use App\Models\BusquedaFallida;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+
 
 class InicioController extends Controller
 {
@@ -27,6 +26,15 @@ class InicioController extends Controller
         ->get();
         return response()->json([$portada, 'message' => 'Listado Portada'], 200);
     }
+
+    public function portadanosotros()
+    {
+        $portada = Portada::select('imagen')
+        ->where("ubicacion", "Nosotros")
+        ->get();
+        return response()->json([$portada, 'message' => 'Listado Portada'], 200);
+    }
+
 
     public function fallido(Request $request)
     { 

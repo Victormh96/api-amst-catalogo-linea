@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // Portada
 Route::get('/portada-inicio', [App\Http\Controllers\User\InicioController::class, 'portadainicio']);
 Route::get('/portada-registro', [App\Http\Controllers\User\InicioController::class, 'portadaregistro']);
+Route::get('/portada-nosotros', [App\Http\Controllers\User\InicioController::class, 'portadanosotros']);
 Route::post('/busqueda-fallida', [App\Http\Controllers\User\InicioController::class, 'fallido']);
 
 // Publicidad
