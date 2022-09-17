@@ -5,15 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Models\Rubro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class CategoriaController extends Controller
 {
     public function tag()
     {
-        $tag = Rubro::where('estado', true)
-        ->orderBy('nombre_rubro', 'ASC')
-        ->get();
-        
+        $tag = DB::select(DB::raw("exec SP_OBTENER_RUBROS"));      
         return response()->json([$tag, 'message' => 'Listado Tag'], 200);
     }
 
@@ -23,25 +21,21 @@ class CategoriaController extends Controller
         ->whereRelation('categoria', 'slug', $slug)
         ->orderBy('nombre_rubro', 'ASC')
         ->get();
+        return response()->json([$rubro, 'message' => 'Listado Rubro'], 200);
+    }
 
+    public function categoriallena($slug)
+    {
+        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :Param1"),[
+            ':Param1' => $slug,
+        ]);
         return response()->json([$rubro, 'message' => 'Listado Rubro'], 200);
     }
 
     public function categoriadestacado()
     {
-        $profesional = Rubro::where('estado', true)
-        ->where('id_categoria', 1)
-        ->orderBy('click', 'DESC')
-        ->limit(6)
-        ->get();
-
-        $empresa = Rubro::where('estado', true)
-        ->where('id_categoria', 2)
-        ->orderBy('click', 'DESC')
-        ->limit(6)
-        ->get();
-
-        return response()->json([$profesional, $empresa, 'message' => 'Listado Destacado'], 200);
+        $destacados = DB::select(DB::raw("exec SP_OBTENER_RUBROS_DESTACADOS"));
+        return response()->json([$destacados, 'message' => 'Listado Destacado'], 200);
     }
 
     public function categoriaclick($id)

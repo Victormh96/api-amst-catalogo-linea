@@ -18,6 +18,7 @@ Route::post('/publicidad-click/{id}', [App\Http\Controllers\User\PublicidadContr
 // Categorias
 Route::get('/tag', [App\Http\Controllers\User\CategoriaController::class, 'tag']);
 Route::get('/categoria/{slug}', [App\Http\Controllers\User\CategoriaController::class, 'categoria']);
+Route::get('/categoria-llena/{slug}', [App\Http\Controllers\User\CategoriaController::class, 'categoriallena']);
 Route::get('/categoria-destacado', [App\Http\Controllers\User\CategoriaController::class, 'categoriadestacado']);
 Route::post('/categoria-click/{id}', [App\Http\Controllers\User\CategoriaController::class, 'categoriaclick']);
 
