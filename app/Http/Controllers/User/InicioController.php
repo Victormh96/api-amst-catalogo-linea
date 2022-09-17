@@ -46,7 +46,7 @@ class InicioController extends Controller
                 $busqueda->save();
             endif;
 
-        return response()->json(['message' => 'busqueda Guardada'], 200);
+        return response()->json(['message' => 'busqueda Fallida'], 200);
         });
     }
 }

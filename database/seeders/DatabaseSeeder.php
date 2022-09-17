@@ -1,5 +1,5 @@
 <?php
-//php artisan make:seeder nombre-seeder
+// php artisan make:seeder nombre-seeder
 
 namespace Database\Seeders;
 
@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaSeeder::class);
         $this->call(RubroSeeder::class);
         $this->call(GeneroSeeder::class);
+        $this->call(RolSeeder::class);
     }
 }

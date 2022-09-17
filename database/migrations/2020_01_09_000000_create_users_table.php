@@ -14,7 +14,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('telefono')->unique();
             $table->string('password')->nullable();
             $table->boolean('estado');
             $table->unsignedBigInteger('id_rol');

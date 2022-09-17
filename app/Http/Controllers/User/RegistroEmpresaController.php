@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\User;
 use App\Models\Cuenta;
 use App\Models\Contacto;
 use App\Models\Servicio;
@@ -21,9 +22,9 @@ class RegistroEmpresaController extends Controller
         $registro = new Cuenta();
         $registro->nombre_cuenta = $request->name;
         $registro->slug = Str::slug($request->name).'-'.substr(md5(time()), 0, 4);
-        $registro->documento = $request->document;
+        $registro->documento = $request->documento;
         $registro->email = $request->email;
-        $registro->descripcion = $request->descripcionEmpresa;
+        $registro->descripcion = $request->descripcion;
         $registro->latitud = $request->latitud;
         $registro->longitud = $request->longitud;
         $registro->direccion = $request->direccion;
@@ -121,6 +122,17 @@ class RegistroEmpresaController extends Controller
             $servicio->id_cuenta = $registro->id;
             $servicio->save();
         }
+
+        // Saving
+        $usuario = new User();
+        $usuario->nombre = $registro->nombre_cuenta;
+        $usuario->slug = $registro->slug;
+        $usuario->email = $registro->email;
+        $usuario->password = bcrypt($registro->documento);
+        $usuario->estado = false;
+        $usuario->id_rol = 3;
+        $usuario->id_cuenta = $registro->id;
+        $usuario->save();
 
         return response()->json(['message' => 'Registro Guardado'], 200);
         });

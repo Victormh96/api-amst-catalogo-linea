@@ -17,19 +17,10 @@ class CategoriaController extends Controller
 
     public function categoria($slug)
     {
-        $rubro = Rubro::where('estado', true)
-        ->whereRelation('categoria', 'slug', $slug)
-        ->orderBy('nombre_rubro', 'ASC')
-        ->get();
-        return response()->json([$rubro, 'message' => 'Listado Rubro'], 200);
-    }
-
-    public function categoriallena($slug)
-    {
         $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :Param1"),[
             ':Param1' => $slug,
         ]);
-        return response()->json([$rubro, 'message' => 'Listado Rubro'], 200);
+        return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
     }
 
     public function categoriadestacado()

@@ -20,9 +20,9 @@ class RegistroServicioController extends Controller
         // Saving
         $registro = new Cuenta();
         $registro->nombre_cuenta = $request->name.' '.$request->lastName;
-        $registro->slug = Str::slug($request->name).'-'.substr(md5(time()), 0, 4);
+        $registro->slug = Str::slug($request->name.'-'.$request->lastName).'-'.substr(md5(time()), 0, 4);
         $registro->fecha_nacimiento = $request->fechaNacimiento;
-        $registro->documento = $request->document;
+        $registro->documento = $request->documento;
         $registro->email = $request->email;
         $registro->descripcion = $request->descripcion;
         $registro->id_genero = $request->genero;
@@ -120,6 +120,17 @@ class RegistroServicioController extends Controller
             $servicio->id_cuenta = $registro->id;
             $servicio->save();
         endforeach;
+
+        // Saving
+        $usuario = new User();
+        $usuario->nombre = $registro->nombre_cuenta;
+        $usuario->slug = $registro->slug;
+        $usuario->email = $registro->email;
+        $usuario->password = bcrypt($registro->documento);
+        $usuario->estado = false;
+        $usuario->id_rol = 3;
+        $usuario->id_cuenta = $registro->id;
+        $usuario->save();
 
         return response()->json(['message' => 'Registro Guardado'], 200);
         });
