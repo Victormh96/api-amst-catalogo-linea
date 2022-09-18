@@ -1,5 +1,5 @@
 <?php
-//php artisan make:controller nombre-controlador
+// php artisan make:controller nombre-controlador
 
 namespace App\Http\Controllers;
 
