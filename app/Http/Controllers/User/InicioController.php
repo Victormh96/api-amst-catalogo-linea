@@ -10,31 +10,13 @@ use App\Http\Controllers\Controller;
 
 class InicioController extends Controller
 {
-    public function portadainicio()
+    public function portada($ubicacion)
     {
-        $portada = Portada::select('imagen')
-        ->where("ubicacion", "Inicio")
-        ->first();
-
+        $portada = DB::select(DB::raw("exec SP_OBTENER_PORTADAS :Param1"),[
+            ':Param1' => $ubicacion,
+        ]);
         return response()->json([$portada, 'message' => 'Listado Portada'], 200);
     }
-
-    public function portadaregistro()
-    {
-        $portada = Portada::select('imagen')
-        ->where("ubicacion", "Registro")
-        ->first();
-        return response()->json([$portada, 'message' => 'Listado Portada'], 200);
-    }
-
-    public function portadanosotros()
-    {
-        $portada = Portada::select('imagen')
-        ->where("ubicacion", "Nosotros")
-        ->first();
-        return response()->json([$portada, 'message' => 'Listado Portada'], 200);
-    }
-
 
     public function fallido(Request $request)
     { 

@@ -21,9 +21,7 @@ use App\Http\Controllers\User\RegistroServicioController;
 */
 
 // Portada
-Route::get('/portada-inicio', [InicioController::class, 'portadainicio']);
-Route::get('/portada-registro', [InicioController::class, 'portadaregistro']);
-Route::get('/portada-nosotros', [InicioController::class, 'portadanosotros']);
+Route::get('/portada/{ubicacion}', [InicioController::class, 'portada']);
 Route::post('/busqueda-fallida', [InicioController::class, 'fallido']);
 
 // Publicidad

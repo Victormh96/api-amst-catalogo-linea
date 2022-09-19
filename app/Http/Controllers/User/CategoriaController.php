@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Rubro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
