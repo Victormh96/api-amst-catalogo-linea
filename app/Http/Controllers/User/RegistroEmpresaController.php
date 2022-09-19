@@ -9,7 +9,7 @@ use App\Models\Servicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller; 
 
 class RegistroEmpresaController extends Controller
 {
@@ -25,6 +25,7 @@ class RegistroEmpresaController extends Controller
         $registro->documento = $request->documento;
         $registro->email = $request->email;
         $registro->descripcion = $request->descripcion;
+        $registro->id_genero = $request->categoria;
         $registro->latitud = $request->latitud;
         $registro->longitud = $request->longitud;
         $registro->direccion = $request->direccion;
