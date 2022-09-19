@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\User;
 use App\Models\Cuenta;
 use App\Models\Contacto;
 use App\Models\Servicio;
@@ -41,9 +42,6 @@ class RegistroServicioController extends Controller
         endif;
 
         $registro->save();
-
-        // Saving
-        $contacto = new Contacto();
 
         // Facebook
         if($request->facebook):
@@ -105,9 +103,6 @@ class RegistroServicioController extends Controller
             $contacto->id_detalle_contacto = 7;
             $contacto->id_cuenta = $registro->id;
         endif;
-
-        $contacto->save();
-
 
         // Saving
         $listaServicio = json_decode($request->servicios);
