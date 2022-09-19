@@ -21,8 +21,7 @@ class CuentaController extends Controller
         ->whereIn('id', $servicio->pluck('id_cuenta'))
         ->with(['genero', 'servicio.rubro'])
         ->with('contacto', function ($query) {
-            $query->where('id_detalle_contacto', 5)
-            ->orwhere('id_detalle_contacto', 7);
+            $query->where('id_detalle_contacto', 5);
         })->inRandomOrder()
         ->get();       
 

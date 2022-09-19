@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CuentaController;
 use App\Http\Controllers\User\InicioController;
+use App\Http\Controllers\User\PortadaController;
 use App\Http\Controllers\User\CategoriaController;
 use App\Http\Controllers\User\PublicidadController;
 use App\Http\Controllers\User\RegistroEmpresaController;
@@ -20,9 +21,11 @@ use App\Http\Controllers\User\RegistroServicioController;
 |
 */
 
-// Portada
-Route::get('/portada/{ubicacion}', [InicioController::class, 'portada']);
+// Inicio
 Route::post('/busqueda-fallida', [InicioController::class, 'fallido']);
+
+// Portada
+Route::get('/portada/{ubicacion}', [PortadaController::class, 'portada']);
 
 // Publicidad
 Route::get('/publicidad', [PublicidadController::class, 'publicidad']);
