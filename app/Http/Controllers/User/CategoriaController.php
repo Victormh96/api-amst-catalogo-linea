@@ -39,7 +39,7 @@ class CategoriaController extends Controller
 
     public function categoriaclick($id)
     {
-        DB::select(DB::raw("exec SP_AUMENTAR_CLICK_RUBRO :id"),[
+        DB::statement(DB::raw("exec SP_AUMENTAR_CLICK_RUBRO :id"),[
             ':id' => $id,
         ]);
         return response()->json(['message' => 'Ok'], 200);
