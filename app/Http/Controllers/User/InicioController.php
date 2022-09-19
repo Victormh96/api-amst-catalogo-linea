@@ -14,7 +14,7 @@ class InicioController extends Controller
     {
         $portada = Portada::select('imagen')
         ->where("ubicacion", "Inicio")
-        ->get();
+        ->first();
 
         return response()->json([$portada, 'message' => 'Listado Portada'], 200);
     }
@@ -23,7 +23,7 @@ class InicioController extends Controller
     {
         $portada = Portada::select('imagen')
         ->where("ubicacion", "Registro")
-        ->get();
+        ->first();
         return response()->json([$portada, 'message' => 'Listado Portada'], 200);
     }
 
@@ -31,7 +31,7 @@ class InicioController extends Controller
     {
         $portada = Portada::select('imagen')
         ->where("ubicacion", "Nosotros")
-        ->get();
+        ->first();
         return response()->json([$portada, 'message' => 'Listado Portada'], 200);
     }
 
