@@ -23,6 +23,14 @@ class CategoriaController extends Controller
         return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
     }
 
+    public function categoriaregistro($id_categoria)
+    {
+        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_PARA_REGISTRARSE :Param1"),[
+            ':Param1' => $id_categoria,
+        ]);
+        return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
+    }
+
     public function categoriadestacado()
     {
         $destacados = DB::select(DB::raw("exec SP_OBTENER_RUBROS_DESTACADOS"));
@@ -33,7 +41,6 @@ class CategoriaController extends Controller
     {
         $click = Rubro::find($id)
         ->increment('click');
-
         return response()->json(['message' => 'Ok'], 200);
     }
 }

@@ -31,6 +31,7 @@ Route::post('/publicidad-click/{id}', [PublicidadController::class, 'publicidadc
 // Categorias
 Route::get('/tag', [CategoriaController::class, 'tag']);
 Route::get('/categoria/{slug}', [CategoriaController::class, 'categoria']);
+Route::get('/categoria-registro/{slug}', [CategoriaController::class, 'categoriaregistro']);
 Route::get('/categoria-destacado', [CategoriaController::class, 'categoriadestacado']);
 Route::post('/categoria-click/{id}', [CategoriaController::class, 'categoriaclick']);
 
