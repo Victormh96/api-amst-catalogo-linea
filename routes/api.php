@@ -22,14 +22,14 @@ use App\Http\Controllers\User\RegistroServicioController;
 */
 
 // Inicio
-Route::post('/busqueda-fallida', [InicioController::class, 'fallido']);
+Route::get('/busqueda-fallida/{busqueda}', [InicioController::class, 'fallido']);
 
 // Portada
 Route::get('/portada/{ubicacion}', [PortadaController::class, 'portada']);
 
 // Publicidad
 Route::get('/publicidad', [PublicidadController::class, 'publicidad']);
-Route::post('/publicidad-click/{id}', [PublicidadController::class, 'publicidadclick']);
+Route::get('/publicidad-click/{id}', [PublicidadController::class, 'publicidadclick']);
 
 // Categorias
 Route::get('/tag', [CategoriaController::class, 'tag']);
