@@ -17,16 +17,16 @@ class CategoriaController extends Controller
 
     public function categoria($slug)
     {
-        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :Param1"),[
-            ':Param1' => $slug,
+        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :slug"),[
+            ':slug' => $slug,
         ]);
         return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
     }
 
     public function categoriaregistro($id_categoria)
     {
-        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_PARA_REGISTRARSE :Param1"),[
-            ':Param1' => $id_categoria,
+        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_PARA_REGISTRARSE :id_categoria"),[
+            ':id_categoria' => $id_categoria,
         ]);
         return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
     }
@@ -39,8 +39,9 @@ class CategoriaController extends Controller
 
     public function categoriaclick($id)
     {
-        $click = Rubro::find($id)
-        ->increment('click');
+        DB::select(DB::raw("exec SP_AUMENTAR_CLICK_RUBRO :id"),[
+            ':id' => $id,
+        ]);
         return response()->json(['message' => 'Ok'], 200);
     }
 }
