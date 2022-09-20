@@ -22,7 +22,7 @@ class CuentaController extends Controller
         ->with(['genero', 'servicio.rubro'])
         ->with('contacto', function ($query) {
             $query->where('id_detalle_contacto', 5);
-        })->inRandomOrder()
+        })->orderBy('verificado', 'desc')
         ->get();       
 
         return response()->json([$cuenta, 'message' => 'Listado Catalogo'], 200);
