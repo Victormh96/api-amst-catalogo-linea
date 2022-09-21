@@ -29,7 +29,7 @@ class RegistroServicioController extends Controller
         $registro->id_genero = $request->genero;
         $registro->local = $request->local;
         $registro->servicio_domicilio = $request->servicioDomicilio;
-
+ 
         if($request->local):
             $registro->latitud = $request->latitud;
             $registro->longitud = $request->longitud;
