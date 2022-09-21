@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('descripcion');
             $table->string('marca')->nullable();
+            $table->string('logo')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->string('documento')->unique();
             $table->string('foto')->nullable()->default('cuenta/default.png');
