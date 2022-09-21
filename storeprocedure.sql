@@ -1,3 +1,22 @@
+
+--
+-- Definition for stored procedure SP_AUMENTAR_CLICK_PUBLICIDAD : 
+--
+
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+CREATE PROCEDURE [dbo].[SP_AUMENTAR_CLICK_PUBLICIDAD] @id varchar(3) AS BEGIN
+UPDATE [dbo].[publicidad]
+SET [click] = [click]+1
+WHERE  [id] = @id
+END
+GO
+
 --
 -- Definition for stored procedure SP_AUMENTAR_CLICK_RUBRO : 
 --
@@ -12,6 +31,24 @@ CREATE PROCEDURE [dbo].[SP_AUMENTAR_CLICK_RUBRO] @id varchar(3) AS BEGIN
 UPDATE [dbo].[rubro]
 SET [click] = [click]+1
 WHERE  [id] = @id
+END
+GO
+
+--
+-- Definition for stored procedure SP_BUSQUEDA_FALLIDA : 
+--
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+CREATE PROCEDURE [dbo].[SP_BUSQUEDA_FALLIDA] @busqueda varchar(100) AS BEGIN
+	INSERT INTO [dbo].[busqueda_fallida](
+           [busqueda], [created_at] )
+     VALUES
+           (@busqueda, getdate() )
 END
 GO
 
@@ -35,6 +72,27 @@ SELECT [id]
       ,[updated_at]
   FROM [dbo].[portada]
 WHERE @ubicacion = [ubicacion]
+END
+GO
+
+--
+-- Definition for stored procedure SP_OBTENER_PUBLICIDAD : 
+--
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+CREATE PROCEDURE [dbo].[SP_OBTENER_PUBLICIDAD] AS BEGIN
+SELECT [id]
+      ,[descripcion]
+      ,[imagen]
+      ,[click]
+      ,[created_at]
+      ,[updated_at]
+  FROM [dbo].[publicidad]
 END
 GO
 
