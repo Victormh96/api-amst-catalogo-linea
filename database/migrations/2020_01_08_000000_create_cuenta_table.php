@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('email')->unique();
             $table->string('descripcion');
+            $table->string('marca')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->string('documento')->unique();
             $table->string('foto')->nullable()->default('cuenta/default.png');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->boolean('local')->nullable()->default(false);
             $table->boolean('servicio_domicilio')->nullable()->default(false);
             $table->boolean('verificado')->default(false);
+            $table->string('tags')->nullable();
             $table->boolean('estado')->default(false);
             $table->unsignedBigInteger('id_genero')->nullable();
             $table->foreign('id_genero')->references('id')->on('genero')->onDelete('cascade');
