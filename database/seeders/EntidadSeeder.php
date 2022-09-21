@@ -7,20 +7,26 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class GeneroSeeder extends Seeder
+class EntidadSeeder extends Seeder
 {
     public function run()
     {
         DB::table('genero')->insert([
-            'nombre_genero' => 'Masculino',
+            'nombre_genero' => 'Servicio Profesional',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('genero')->insert([
-            'nombre_genero' => 'Femenino',
+            'nombre_genero' => 'Micro Empresa',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-   }
+
+        DB::table('genero')->insert([
+            'nombre_genero' => 'Empresa',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+    }
 }

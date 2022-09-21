@@ -28,6 +28,11 @@ class Cuenta extends Model
         return $this->belongsTo('App\Models\Genero','id_genero');
     }
 
+    public function entidad()
+    {
+        return $this->belongsTo('App\Models\Entidad','id_entidad');
+    }
+
     public function servicio()
     {
     	return $this->hasMany('App\Models\Servicio', 'id_cuenta', 'id');

@@ -29,6 +29,8 @@ return new class extends Migration
             $table->boolean('estado')->default(false);
             $table->unsignedBigInteger('id_genero')->nullable();
             $table->foreign('id_genero')->references('id')->on('genero')->onDelete('cascade');
+            $table->unsignedBigInteger('id_entidad')->nullable();
+            $table->foreign('id_entidad')->references('id')->on('entidad')->onDelete('cascade');
             $table->timestamps();
         });
     }
