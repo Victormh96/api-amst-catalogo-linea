@@ -31,7 +31,7 @@ class RegistroEmpresaController extends Controller
         $registro->direccion = $request->direccion;
         $registro->horario = $request->horario;
         $registro->local = true;
-        $registro->servicio_domicilio = $request->servicioDomicilio;      
+        $registro->servicio_domicilio = $request->servicioDomicilio;
 
         if($request->imagen):
             $ruta_imagen = $request['imagen']->store('cuenta','public');

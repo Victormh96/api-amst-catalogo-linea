@@ -29,11 +29,19 @@ class RegistroServicioController extends Controller
         $registro->id_genero = $request->genero;
         $registro->local = $request->local;
         $registro->servicio_domicilio = $request->servicioDomicilio;
+        $registro->marca = $request->marca;
+        $registro->id_entidad = 1;
+        $registro->tags = $request->tags;
 
-        if($request->local):
+        if($request->local == true):
             $registro->latitud = $request->latitud;
             $registro->longitud = $request->longitud;
             $registro->direccion = $request->direccion;
+        endif;
+
+        if($request->logo):
+            $ruta_logo = $request['logo']->store('logo','public');
+            $registro->logo = $ruta_logo;
         endif;
 
         if($request->imagen):
@@ -97,11 +105,20 @@ class RegistroServicioController extends Controller
             $contacto->save();
         endif;
 
-        // Mobile
-        if($request->telefono):
+        // Cell Phone
+        if($request->telefonoCelular):
             $contacto = new Contacto();
-            $contacto->descripcion = $request->telefono;
+            $contacto->descripcion = $request->telefonoCelular;
             $contacto->id_detalle_contacto = 7;
+            $contacto->id_cuenta = $registro->id;
+            $contacto->save();
+        endif;
+
+        // Landline
+        if($request->telefonoFijo):
+            $contacto = new Contacto();
+            $contacto->descripcion = $request->telefonoFijo;
+            $contacto->id_detalle_contacto = 8;
             $contacto->id_cuenta = $registro->id;
             $contacto->save();
         endif;

@@ -22,17 +22,5 @@ class GeneroSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-
-        DB::table('genero')->insert([
-            'nombre_genero' => 'Micro Empresa',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('genero')->insert([
-            'nombre_genero' => 'Empresa',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
    }
 }
