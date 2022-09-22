@@ -28,9 +28,6 @@ Route::get('/busqueda-fallida/{busqueda}', [InicioController::class, 'fallido'])
 // Portada
 Route::get('/portada/{ubicacion}', [PortadaController::class, 'portada']);
 
-// Portada
-Route::get('/entidades', [EntidadesController::class, 'entidades']);
-
 // Publicidad
 Route::get('/publicidad', [PublicidadController::class, 'publicidad']);
 Route::get('/publicidad-click/{id}', [PublicidadController::class, 'publicidadclick']);
@@ -47,6 +44,9 @@ Route::get('/catalogo/{slug}', [CuentaController::class, 'catalogocategoria']);
 
 // Cuenta
 Route::get('/cuenta/{slug}', [CuentaController::class, 'cuenta']);
+
+// Entidad
+Route::get('/entidades', [EntidadesController::class, 'entidades']);
 
 // Registro
 Route::post('/registro-servicio', [RegistroServicioController::class, 'guardar']);

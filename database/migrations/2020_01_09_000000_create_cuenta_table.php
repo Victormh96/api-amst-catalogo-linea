@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('email')->unique();
             $table->string('descripcion');
+            $table->string('representante')->nullable();
             $table->string('marca')->nullable();
             $table->string('logo')->nullable();
             $table->date('fecha_nacimiento')->nullable();
