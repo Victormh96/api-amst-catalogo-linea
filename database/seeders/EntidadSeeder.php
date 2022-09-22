@@ -11,20 +11,20 @@ class EntidadSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('genero')->insert([
-            'nombre_genero' => 'Servicio Profesional',
+        DB::table('entidad')->insert([
+            'nombre_entidad' => 'Servicio Profesional',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        DB::table('genero')->insert([
-            'nombre_genero' => 'Micro Empresa',
+        DB::table('entidad')->insert([
+            'nombre_entidad' => 'Micro Empresa',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        DB::table('genero')->insert([
-            'nombre_genero' => 'Empresa',
+        DB::table('entidad')->insert([
+            'nombre_entidad' => 'Empresa',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
