@@ -9,6 +9,7 @@ use App\Http\Controllers\User\CategoriaController;
 use App\Http\Controllers\User\PublicidadController;
 use App\Http\Controllers\User\RegistroEmpresaController;
 use App\Http\Controllers\User\RegistroServicioController;
+use App\Http\Controllers\User\EntidadesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::get('/busqueda-fallida/{busqueda}', [InicioController::class, 'fallido'])
 
 // Portada
 Route::get('/portada/{ubicacion}', [PortadaController::class, 'portada']);
+
+// Portada
+Route::get('/entidades', [EntidadesController::class, 'entidades']);
 
 // Publicidad
 Route::get('/publicidad', [PublicidadController::class, 'publicidad']);
