@@ -99,9 +99,11 @@ class RegistroServicioController extends Controller
 
         // Mobile
         if($request->telefono):
+            $contacto = new Contacto();
             $contacto->descripcion = $request->telefono;
             $contacto->id_detalle_contacto = 7;
             $contacto->id_cuenta = $registro->id;
+            $contacto->save();
         endif;
 
         // Saving
