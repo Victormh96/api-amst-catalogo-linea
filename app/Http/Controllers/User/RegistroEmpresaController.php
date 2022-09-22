@@ -25,13 +25,21 @@ class RegistroEmpresaController extends Controller
         $registro->documento = $request->documento;
         $registro->email = $request->email;
         $registro->descripcion = $request->descripcion;
-        $registro->id_genero = $request->categoria;
+        $registro->fecha_nacimiento = $request->fechaNacimiento;
+        $registro->id_entidad  = $request->entidad;
         $registro->latitud = $request->latitud;
         $registro->longitud = $request->longitud;
         $registro->direccion = $request->direccion;
+        $registro->representante = $request->representante;
         $registro->horario = $request->horario;
         $registro->local = true;
         $registro->servicio_domicilio = $request->servicioDomicilio;
+        $registro->tags = $request->tags;
+
+        if($request->logo):
+            $ruta_logo = $request['logo']->store('logo','public');
+            $registro->logo = $ruta_logo;
+        endif;
 
         if($request->imagen):
             $ruta_imagen = $request['imagen']->store('cuenta','public');
