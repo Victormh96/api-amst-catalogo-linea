@@ -18,9 +18,19 @@ class Cuenta extends Model
         return $this->hasMany('App\Models\Galeria', 'id_cuenta', 'id');
     }
 
+    public function documento()
+    {
+        return $this->hasMany('App\Models\Documento', 'id_cuenta', 'id');
+    }
+
     public function contacto()
     {
         return $this->hasMany('App\Models\Contacto', 'id_cuenta', 'id');
+    }
+
+    public function concepto()
+    {
+        return $this->hasMany('App\Models\Concepto', 'id_cuenta', 'id');
     }
 
     public function genero()

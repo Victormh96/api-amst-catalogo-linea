@@ -52,16 +52,16 @@ class RegistroEmpresaController extends Controller
         // Documentos
         if($request->doc1):
             $documento = new Documento();
-            $ruta_imagen = $request['doc1']->store('documentos','public');
-            $documento->imagen = $ruta_imagen;
+            $ruta_doc1 = $request['doc1']->store('documentos','public');
+            $documento->imagen = $ruta_doc1;
             $documento->id_cuenta = $registro->id;
             $documento->save();
         endif;
 
         if($request->doc2):
             $documento = new Documento();
-            $ruta_imagen = $request['doc2']->store('documentos','public');
-            $documento->imagen = $ruta_imagen;
+            $ruta_doc2 = $request['doc2']->store('documentos','public');
+            $documento->imagen = $ruta_doc2;
             $documento->id_cuenta = $registro->id;
             $documento->save();
         endif;

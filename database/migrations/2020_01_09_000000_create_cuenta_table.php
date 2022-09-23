@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nombre_cuenta');
             $table->string('slug')->unique();
             $table->string('email')->unique();
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('representante')->nullable();
             $table->string('marca')->nullable();
             $table->string('logo')->nullable();
