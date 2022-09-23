@@ -34,7 +34,7 @@ class RegistroServicioController extends Controller
         $registro->id_entidad = 1;
         $registro->tags = $request->tags;
 
-        if($request->local === true):
+        if($request->local == 'true'):
             $registro->latitud = $request->latitud;
             $registro->longitud = $request->longitud;
             $registro->direccion = $request->direccion;
