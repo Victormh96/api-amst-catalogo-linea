@@ -21,5 +21,16 @@ class DetalleConceptoSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        DB::table('detalle_concepto')->insert([
+            'descripcion' => 'Turismo - Cultura',
+            'imagen' => ('concepto/turismo-cultura.png'),
+            'click' => 0,
+            'slug' => Str::slug('turismo-cultura'),
+            'tags' => 'turismo,cultura,turistear',
+            'estado' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
     }
 }
