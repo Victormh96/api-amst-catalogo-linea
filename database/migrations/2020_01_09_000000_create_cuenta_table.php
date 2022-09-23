@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->string('documento')->unique();
+            $table->string('concepto');
             $table->string('foto');
             $table->string('latitud')->nullable();
             $table->string('longitud')->nullable();
