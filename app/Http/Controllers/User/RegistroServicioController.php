@@ -17,7 +17,8 @@ class RegistroServicioController extends Controller
     public function guardar(Request $request)
     {
         // Transaccion
-        DB::transaction(function () use ($request) {
+
+        try {
 
         // Saving
         $registro = new Cuenta();
@@ -40,12 +41,12 @@ class RegistroServicioController extends Controller
             $registro->direccion = $request->direccion;
         endif;
 
-        if($request->logo):
+        if($request->logo <> 'false' ):
             $ruta_logo = $request['logo']->store('logo','public');
             $registro->logo = $ruta_logo;
         endif;
 
-        if($request->imagen):
+        if($request->imagen<> 'false'):
             $ruta_imagen = $request['imagen']->store('cuenta','public');
             $registro->foto = $ruta_imagen;
         endif;
@@ -53,7 +54,7 @@ class RegistroServicioController extends Controller
         $registro->save();
 
         // Documentos
-        if($request->doc1):
+        if($request->doc1 <> 'false'):
             $documento = new Documento();
             $ruta_doc1 = $request['doc1']->store('documentos','public');
             $documento->imagen =  $ruta_doc1;
@@ -61,7 +62,7 @@ class RegistroServicioController extends Controller
             $documento->save();
         endif;
 
-        if($request->doc2):
+        if($request->doc2 <> 'false'):
             $documento = new Documento();
             $ruta_doc2 = $request['doc2']->store('documentos','public');
             $documento->imagen = $ruta_doc2;
@@ -165,6 +166,15 @@ class RegistroServicioController extends Controller
         $usuario->save();
 
         return response()->json(['message' => 'Registro Guardado'], 200);
-        });
+    
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw  $th;
+            return response()->json([
+                'success'=>false,
+                'message'=>'Ha ocurrido un error al guardar',
+                'data'=>$th
+            ],422);
+        }
     }
 }
