@@ -13,7 +13,7 @@ class DetalleConceptoSeeder extends Seeder
     {
         DB::table('detalle_concepto')->insert([
             'descripcion' => 'Paseo el Carmen',
-            'imagen' => ('concepto/paseo-carmen.png'),
+            'imagen' => ('concepto/paseo-el-carmen.png'),
             'click' => 0,
             'slug' => Str::slug('paseo-el-carmen'),
             'tags' => 'paseo,carmen,concepcion,vida nocturna',

@@ -15,7 +15,7 @@ use App\Http\Controllers\Controller;
 class RegistroServicioController extends Controller
 {
     public function guardar(Request $request)
-    { 
+    {
         // Transaccion
         DB::transaction(function () use ($request) {
 

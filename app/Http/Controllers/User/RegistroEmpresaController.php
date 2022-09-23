@@ -7,8 +7,8 @@ use App\Models\Cuenta;
 use App\Models\Contacto;
 use App\Models\Servicio;
 use App\Models\Documento;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller; 
 
@@ -49,7 +49,7 @@ class RegistroEmpresaController extends Controller
 
         $registro->save();
 
-        // Documentos
+        // Documento
         if($request->doc1):
             $documento = new Documento();
             $ruta_doc1 = $request['doc1']->store('documentos','public');
@@ -58,6 +58,7 @@ class RegistroEmpresaController extends Controller
             $documento->save();
         endif;
 
+        // Documento
         if($request->doc2):
             $documento = new Documento();
             $ruta_doc2 = $request['doc2']->store('documentos','public');
