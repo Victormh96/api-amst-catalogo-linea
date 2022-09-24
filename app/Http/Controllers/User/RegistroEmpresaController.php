@@ -16,8 +16,8 @@ class RegistroEmpresaController extends Controller
 {
     public function guardar(Request $request)
     { 
-
-        try {
+        // Transaccion
+        DB::transaction(function () use ($request) {
 
         // Saving
         $registro = new Cuenta();
@@ -163,18 +163,6 @@ class RegistroEmpresaController extends Controller
         $usuario->save();
 
         return response()->json(['message' => 'Registro Guardado'], 200);
-
-
-        } catch (\Throwable $th) {
-
-            DB::rollBack();
-            throw  $th;
-            return response()->json([
-                'success'=>false,
-                'message'=>'Ha ocurrido un error al guardar',
-                'data'=>$th
-            ],422);
-        }
-
+        });
     }
 }

@@ -6,10 +6,10 @@ use App\Http\Controllers\User\CuentaController;
 use App\Http\Controllers\User\InicioController;
 use App\Http\Controllers\User\PortadaController;
 use App\Http\Controllers\User\CategoriaController;
+use App\Http\Controllers\User\EntidadesController;
 use App\Http\Controllers\User\PublicidadController;
 use App\Http\Controllers\User\RegistroEmpresaController;
 use App\Http\Controllers\User\RegistroServicioController;
-use App\Http\Controllers\User\EntidadesController;
 
 /*
 |--------------------------------------------------------------------------
