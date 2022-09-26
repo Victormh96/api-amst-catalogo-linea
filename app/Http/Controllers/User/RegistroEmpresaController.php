@@ -11,13 +11,14 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\Validator;
 
 class RegistroEmpresaController extends Controller
 {
     public function guardar(Request $request)
     { 
         // Validation
-        $data = $request->validate([
+        $data = Validator::make($request->all(), [
             'email.*' => 'unique:cuenta',
             'documento.*' => 'unique:cuenta' 
         ]);
