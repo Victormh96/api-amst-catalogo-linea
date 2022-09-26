@@ -16,6 +16,16 @@ class RegistroEmpresaController extends Controller
 {
     public function guardar(Request $request)
     { 
+        // Validation
+        $data = $request->validate([
+            'email.*' => 'unique:cuenta',
+            'documento.*' => 'unique:cuenta' 
+        ]);
+
+        if ($data->fails()):
+            return response()->json([$data->errors(), 'message' => 'Registro No Guardado'], 400);
+        endif;
+
         // Transaccion
         DB::transaction(function () use ($request) {
 

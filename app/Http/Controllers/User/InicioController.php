@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-
 class InicioController extends Controller
 {
     public function fallido($busqueda)

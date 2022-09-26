@@ -4,9 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Models\Cuenta;
-use App\Models\Documento;
 use App\Models\Contacto;
 use App\Models\Servicio;
+use App\Models\Documento;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +16,16 @@ class RegistroServicioController extends Controller
 {
     public function guardar(Request $request)
     {
+        // Validation
+        $data = $request->validate([
+            'email.*' => 'unique:cuenta',
+            'documento.*' => 'unique:cuenta' 
+        ]);
+
+        if ($data->fails()):
+            return response()->json([$data->errors(), 'message' => 'Registro No Guardado'], 400);
+        endif;
+
         // Transaccion
         DB::transaction(function () use ($request) {
 
@@ -34,17 +44,20 @@ class RegistroServicioController extends Controller
         $registro->id_entidad = 1;
         $registro->tags = $request->tags;
 
+        // Local
         if($request->local == 'true'):
             $registro->latitud = $request->latitud;
             $registro->longitud = $request->longitud;
             $registro->direccion = $request->direccion;
         endif;
 
+        // Img
         if($request->logo <> 'false' ):
             $ruta_logo = $request['logo']->store('logo','public');
             $registro->logo = $ruta_logo;
         endif;
 
+        // Img
         if($request->imagen<> 'false'):
             $ruta_imagen = $request['imagen']->store('cuenta','public');
             $registro->foto = $ruta_imagen;
@@ -61,6 +74,7 @@ class RegistroServicioController extends Controller
             $documento->save();
         endif;
 
+        // Documentos
         if($request->doc2 <> 'false'):
             $documento = new Documento();
             $ruta_doc2 = $request['doc2']->store('documentos','public');
