@@ -19,8 +19,8 @@ class RegistroEmpresaController extends Controller
     { 
         // Validation
         $data = Validator::make($request->all(), [
-            'email.*' => 'unique:cuenta',
-            'documento.*' => 'unique:cuenta' 
+            'email' => 'unique:cuenta',
+            'documento' => 'unique:cuenta' 
         ]);
 
         if ($data->fails()):
