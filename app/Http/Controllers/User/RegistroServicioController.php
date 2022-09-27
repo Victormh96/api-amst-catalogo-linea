@@ -59,7 +59,7 @@ class RegistroServicioController extends Controller
         endif;
 
         // Img
-        if($request->imagen<> 'false'):
+        if($request->imagen <> 'false'):
             $ruta_imagen = $request['imagen']->store('cuenta','public');
             $registro->foto = $ruta_imagen;
         endif;
