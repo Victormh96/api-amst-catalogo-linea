@@ -1,4 +1,7 @@
 
+USE [DBCATBWEB]
+GO
+
 --
 -- Definition for stored procedure SP_AUMENTAR_CLICK_PUBLICIDAD : 
 --
@@ -242,3 +245,22 @@ WHERE R.[estado] = 'true' AND C.[slug] = @slug AND (
 ORDER BY R.[nombre_rubro]
 END
 GO
+
+
+/****** Object:  StoredProcedure [dbo].[SP_OBTENER_PORTADAS]    Script Date: 26/9/2022 13:55:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+    -- =============================================
+CREATE PROCEDURE [dbo].[SP_OBTENER_ENTIDADES] AS BEGIN
+SELECT [id]
+      ,[nombre_entidad]
+      ,[created_at]
+      ,[updated_at]
+  FROM [dbo].[entidad]
+  WHERE [ID] <> 1
+END
