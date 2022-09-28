@@ -10,18 +10,30 @@ class CategoriaController extends Controller
 {
     public function tag()
     {
+        try {
         $tag = DB::select(DB::raw("exec SP_OBTENER_RUBROS"));  
 
         return response()->json([$tag, 'message' => 'Listado Tag'], 200);
+
+    } catch(\Exception $e) {
+
+        return response()->json([$e], 400);
+    }
     }
 
     public function categoria($slug)
     {
+        try {
         $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :slug"),[
             ':slug' => $slug,
         ]);
 
         return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
+
+    } catch(\Exception $e) {
+
+        return response()->json([$e], 400);
+    }
     }
 
     public function categoriaregistro($id_categoria)
