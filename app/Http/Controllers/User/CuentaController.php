@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Rubro;
 use App\Models\Cuenta;
 use App\Models\Servicio;
+use App\Models\Concepto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,6 +31,26 @@ class CuentaController extends Controller
         return response()->json([$cuenta, 'message' => 'Listado Catalogo'], 200);
     }
 
+    public function catalogoconcepto($id)
+    {
+        $servicio = Concepto::
+        whereHas('detalleconcepto', function ($query) use ($id) {
+            return $query->where('slug', $id);
+        })->get();
+        
+        $cuenta = Cuenta::where('estado', true)
+        ->whereIn('id', $servicio->pluck('id_cuenta'))
+        ->with(['genero', 'servicio.rubro'])
+        ->with('contacto', function ($query) {
+            $query->where('id_detalle_contacto', 5)
+            ->orWhere('id_detalle_contacto', 7);
+        })->orderBy('verificado', 'desc')
+        ->inRandomOrder()
+        ->get();       
+
+        return response()->json([$cuenta, 'message' => 'Listado Catalogo'], 200);
+    }
+
     public function cuenta($slug)
     {
         $cuenta = Cuenta::where('estado', true)
@@ -37,6 +58,6 @@ class CuentaController extends Controller
         ->with(['genero', 'contacto.detallecontacto', 'galeria', 'servicio.rubro'])
         ->first();
 
-        return response()->json([$cuenta, 'message' => 'Listado Cuenta'], 200);
+        return response()->json([$cuenta,  'message' => 'Listado Cuenta'], 200);
     }
 }
