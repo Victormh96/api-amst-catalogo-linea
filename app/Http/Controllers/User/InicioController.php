@@ -10,7 +10,8 @@ class InicioController extends Controller
     public function fallido($busqueda)
     { 
         try {
-            DB::statement(DB::raw("exec SP_BUSQUEDA_FALLIDA :busqueda"),[
+            
+            DB::statement(DB::raw("exec SP_BUSQUEDA_FALLIDA :busqueda"), [
                 ':busqueda' => $busqueda,
             ]);
             
