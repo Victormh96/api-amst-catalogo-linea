@@ -22,7 +22,8 @@ class RegistroServicioController extends Controller
             // Validation
             $data = Validator::make($request->all(), [
                 'email' => 'unique:cuenta',
-                'documento' => 'unique:cuenta' 
+                'documento' => 'unique:cuenta',
+                'fechaNacimiento' => 'date|before:today'
             ]);
 
             if ($data->fails()):
