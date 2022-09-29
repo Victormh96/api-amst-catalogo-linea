@@ -41,8 +41,6 @@ Route::get('/categoria-click/{id}', [CategoriaController::class, 'categoriaclick
 
 // Catalogo
 Route::get('/catalogo/{slug}', [CuentaController::class, 'catalogocategoria']);
-
-// Catalogo-concepto
 Route::get('/catalogo-concepto/{id}', [CuentaController::class, 'catalogoconcepto']);
 
 // Cuenta

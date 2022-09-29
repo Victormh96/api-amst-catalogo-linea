@@ -11,53 +11,76 @@ class CategoriaController extends Controller
     public function tag()
     {
         try {
-        $tag = DB::select(DB::raw("exec SP_OBTENER_RUBROS"));  
 
-        return response()->json([$tag, 'message' => 'Listado Tag'], 200);
+            $tag = DB::select(DB::raw("exec SP_OBTENER_RUBROS"));  
 
-    } catch(\Exception $e) {
+            return response()->json([$tag, 'message' => 'Listado Tag'], 200);
 
-        return response()->json([$e], 400);
-    }
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }
     }
 
     public function categoria($slug)
     {
         try {
-        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :slug"),[
-            ':slug' => $slug,
-        ]);
 
-        return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
+            $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_POR_CATEGORIA :slug"), [
+                ':slug' => $slug
+            ]);
 
-    } catch(\Exception $e) {
+            return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
 
-        return response()->json([$e], 400);
-    }
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }
     }
 
     public function categoriaregistro($id_categoria)
     {
-        $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_PARA_REGISTRARSE :id_categoria"),[
-            ':id_categoria' => $id_categoria,
-        ]);
+        try {
 
-        return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
+            $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_PARA_REGISTRARSE :id_categoria"), [
+                ':id_categoria' => $id_categoria
+            ]);
+
+            return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
+
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }       
     }
 
     public function categoriadestacado()
     {
-        $destacados = DB::select(DB::raw("exec SP_OBTENER_RUBROS_DESTACADOS"));
+        try {
 
-        return response()->json([$destacados, 'message' => 'Listado Destacado'], 200);
+            $destacados = DB::select(DB::raw("exec SP_OBTENER_RUBROS_DESTACADOS"));
+
+            return response()->json([$destacados, 'message' => 'Listado Destacado'], 200);
+
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }   
     }
 
     public function categoriaclick($id)
     {
-        DB::statement(DB::raw("exec SP_AUMENTAR_CLICK_RUBRO :id"),[
-            ':id' => $id,
-        ]);
+        try {
 
-        return response()->json(['message' => 'Ok'], 200);
+            DB::statement(DB::raw("exec SP_AUMENTAR_CLICK_RUBRO :id"), [
+                ':id' => $id
+            ]);
+
+            return response()->json(['message' => 'Ok'], 200);
+        
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }   
     }
 }

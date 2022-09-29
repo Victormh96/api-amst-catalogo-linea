@@ -10,10 +10,17 @@ class PortadaController extends Controller
 {
     public function portada($ubicacion)
     {
-        $portada = DB::select(DB::raw("exec SP_OBTENER_PORTADAS :Param1"),[
-            ':Param1' => $ubicacion,
-        ]);
+        try {
+
+            $portada = DB::select(DB::raw("exec SP_OBTENER_PORTADAS :Param1"), [
+                ':Param1' => $ubicacion
+            ]);
         
-        return response()->json([$portada, 'message' => 'Listado Portada'], 200);
+            return response()->json([$portada, 'message' => 'Listado Portada'], 200);
+                        
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }
     }
 }
