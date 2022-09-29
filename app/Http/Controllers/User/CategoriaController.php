@@ -68,15 +68,15 @@ class CategoriaController extends Controller
         }   
     }
 
-    public function categoriaconcepto($id)
+    public function categoriaconcepto($slug)
     {
         try {
 
-            $id_concepto = DB::select(DB::raw("exec SP_OBTENER_RUBROS_CONCEPTO :id_concepto"), [
-                ':id_concepto' => $id
+            $concepto = DB::select(DB::raw("exec SP_OBTENER_RUBROS_CONCEPTO :id_concepto"), [
+                ':id_concepto' => $slug
             ]);
 
-            return response()->json([$id_concepto, 'message' => 'Listado Destacado'], 200);
+            return response()->json([$concepto, 'message' => 'Listado Destacado'], 200);
 
         } catch(\Exception $e) {
 
