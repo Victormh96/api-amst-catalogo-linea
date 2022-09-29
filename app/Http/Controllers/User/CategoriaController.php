@@ -68,6 +68,22 @@ class CategoriaController extends Controller
         }   
     }
 
+    public function categoriaconcepto($id)
+    {
+        try {
+
+            $id_concepto = DB::select(DB::raw("exec SP_OBTENER_RUBROS_CONCEPTO :id_concepto"), [
+                ':id_concepto' => $id
+            ]);
+
+            return response()->json([$id_concepto, 'message' => 'Listado Destacado'], 200);
+
+        } catch(\Exception $e) {
+
+            return response()->json([$e], 400);
+        }   
+    }
+
     public function categoriaclick($id)
     {
         try {
