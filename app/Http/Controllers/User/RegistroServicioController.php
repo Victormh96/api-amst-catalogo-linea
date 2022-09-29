@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Cuenta;
 use App\Models\Contacto;
@@ -23,7 +24,7 @@ class RegistroServicioController extends Controller
             $data = Validator::make($request->all(), [
                 'email' => 'unique:cuenta',
                 'documento' => 'unique:cuenta',
-                'fechaNacimiento' => 'date|before:today'
+                'fechaNacimiento' => 'date|before:' . Carbon::now()->subYears(18)->format('Y-m-d')
             ]);
 
             if ($data->fails()):
