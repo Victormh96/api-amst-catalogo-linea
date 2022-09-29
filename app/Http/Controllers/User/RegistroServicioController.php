@@ -24,7 +24,7 @@ class RegistroServicioController extends Controller
             $data = Validator::make($request->all(), [
                 'email' => 'unique:cuenta',
                 'documento' => 'unique:cuenta',
-                'fechaNacimiento' => 'date|before:' . Carbon::now()->subYears(18)->format('Y-m-d')
+                'fecha' => 'date|before:' . Carbon::now()->subYears(18)->format('Y-m-d')
             ]);
 
             if ($data->fails()):
@@ -38,7 +38,7 @@ class RegistroServicioController extends Controller
                 $registro = new Cuenta();
                 $registro->nombre_cuenta = $request->name.' '.$request->lastName;
                 $registro->slug = Str::slug($request->name.'-'.$request->lastName).'-'.substr(md5(time()), 0, 4);
-                $registro->fecha_nacimiento = $request->fechaNacimiento;
+                $registro->fecha = $request->fecha;
                 $registro->documento = $request->documento;
                 $registro->email = $request->email;
                 $registro->descripcion = $request->descripcion;

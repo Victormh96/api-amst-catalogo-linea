@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('representante')->nullable();
             $table->string('marca')->nullable();
             $table->string('logo')->nullable();
-            $table->date('fecha_nacimiento')->nullable();
+            $table->date('fecha')->nullable();
             $table->string('documento')->unique();
             $table->string('foto');
             $table->string('latitud')->nullable()->default(0);

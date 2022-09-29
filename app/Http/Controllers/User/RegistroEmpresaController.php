@@ -23,7 +23,7 @@ class RegistroEmpresaController extends Controller
             $data = Validator::make($request->all(), [
                 'email' => 'unique:cuenta',
                 'documento' => 'unique:cuenta',
-                'fechaNacimiento' => 'date|before:today'
+                'fecha' => 'date|before:today'
             ]);
 
             if ($data->fails()):
@@ -40,7 +40,7 @@ class RegistroEmpresaController extends Controller
                 $registro->documento = $request->documento;
                 $registro->email = $request->email;
                 $registro->descripcion = $request->descripcion;
-                $registro->fecha_nacimiento = $request->fechaNacimiento;
+                $registro->fecha = $request->fecha;
                 $registro->id_entidad  = $request->entidad;
                 $registro->latitud = $request->latitud;
                 $registro->longitud = $request->longitud;
