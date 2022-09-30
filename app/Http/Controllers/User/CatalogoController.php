@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Cuenta;
 use App\Models\Servicio;
 use App\Models\Concepto;
+use App\Models\DetalleConcepto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -46,6 +47,8 @@ class CatalogoController extends Controller
                 return $query->where('slug', $slug);
             })->get();
         
+            $detalleconcepto = DetalleConcepto::where('slug', $slug)->get();
+
             $cuenta = Cuenta::where('estado', true)
             ->whereIn('id', $concepto->pluck('id_cuenta'))
             ->with(['servicio.rubro'])
@@ -56,7 +59,7 @@ class CatalogoController extends Controller
             ->inRandomOrder()
             ->get();       
 
-            return response()->json([$cuenta, 'message' => 'Listado Catalogo'], 200);
+            return response()->json([$cuenta, $detalleconcepto ,'message' => 'Listado Catalogo'], 200);
                 
         } catch(\Exception $e) {
 
