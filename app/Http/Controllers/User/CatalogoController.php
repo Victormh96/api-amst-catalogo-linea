@@ -26,7 +26,8 @@ class CatalogoController extends Controller
             ->with('contacto', function ($query) {
                 $query->where('id_detalle_contacto', 5)
                 ->orWhere('id_detalle_contacto', 7);
-            })->orderBy('verificado', 'desc')
+            })
+            ->orderBy('verificado', 'desc')
             ->inRandomOrder()
             ->get();       
 
@@ -47,7 +48,8 @@ class CatalogoController extends Controller
                 return $query->where('slug', $slug);
             })->get();
         
-            $detalleconcepto = DetalleConcepto::where('slug', $slug)->get();
+            $detalleconcepto = DetalleConcepto::where('slug', $slug)
+            ->get();
 
             $cuenta = Cuenta::where('estado', true)
             ->whereIn('id', $concepto->pluck('id_cuenta'))
