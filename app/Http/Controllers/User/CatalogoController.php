@@ -41,14 +41,17 @@ class CatalogoController extends Controller
     {
         try {
 
-            $servicio = Concepto::
+            $concepto = Concepto::
             whereHas('detalleconcepto', function ($query) use ($slug) {
                 return $query->where('slug', $slug);
             })->get();
         
             $cuenta = Cuenta::where('estado', true)
-            ->whereIn('id', $servicio->pluck('id_cuenta'))
-            ->with(['servicio.rubro', 'concepto'])
+            ->whereIn('id', $concepto->pluck('id_cuenta'))
+            ->with(['servicio.rubro'])
+            ->with('concepto', function ($query) use ($concepto) {
+                $query->where('id_detalle_concepto', $concepto->pluck('id_detalle_concepto'));
+            })
             ->orderBy('verificado', 'desc')
             ->inRandomOrder()
             ->get();       

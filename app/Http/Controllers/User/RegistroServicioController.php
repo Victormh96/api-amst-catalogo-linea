@@ -39,7 +39,6 @@ class RegistroServicioController extends Controller
                 $registro->nombre_cuenta = $request->name.' '.$request->lastName;
                 $registro->slug = Str::slug($request->name.'-'.$request->lastName).'-'.substr(md5(time()), 0, 4);
                 $registro->fecha = $request->fechaNacimiento;
-                $registro->id_entidad  = 1;
                 $registro->documento = $request->documento;
                 $registro->email = $request->email;
                 $registro->descripcion = $request->descripcion;
