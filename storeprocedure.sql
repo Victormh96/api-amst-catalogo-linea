@@ -264,3 +264,36 @@ SELECT [id]
   FROM [dbo].[entidad]
   WHERE [ID] <> 1
 END
+
+
+/****** Object:  StoredProcedure [dbo].[SP_OBTENER_RUBROS_CONCEPTO]    Script Date: 30/9/2022 08:17:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+    -- =============================================
+CREATE PROCEDURE [dbo].[SP_OBTENER_RUBROS_CONCEPTO] @id_concepto varchar(30) AS BEGIN
+SELECT R.[id],
+    R.[nombre_rubro],
+    R.[slug],
+    R.[imagen],
+    R.[click],
+    R.[tag],
+    R.[estado],
+    R.[id_categoria],
+    R.[created_at],
+    R.[updated_at]
+FROM [dbo].[rubro] AS R
+WHERE R.[estado] = 'true' AND (
+        SELECT COUNT(S.[id_rubro])
+        FROM servicio AS S
+        WHERE S.[id_rubro] = R.[id] AND ( SELECT COUNT(C.[id_cuenta]) FROM concepto AS C
+										  INNER JOIN detalle_concepto AS DC ON C.[id_detalle_concepto] = DC.[id]
+										  WHERE C.[id_cuenta] = S.[id_cuenta] AND DC.[slug] = @id_concepto) > 0 
+    ) > 0 
+
+ORDER BY R.[nombre_rubro] ASC
+
+END

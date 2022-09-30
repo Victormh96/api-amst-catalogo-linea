@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('concepto', function (Blueprint $table) {
             $table->id();
+            $table->string('latitud')->nullable()->default(0);
+            $table->string('longitud')->nullable()->default(0);
             $table->unsignedBigInteger('id_detalle_concepto');
             $table->foreign('id_detalle_concepto')->references('id')->on('detalle_concepto')->onDelete('cascade');
             $table->unsignedBigInteger('id_cuenta');
