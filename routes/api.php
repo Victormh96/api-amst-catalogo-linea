@@ -5,11 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\CuentaController;
 use App\Http\Controllers\User\InicioController;
 use App\Http\Controllers\User\PortadaController;
+use App\Http\Controllers\User\EntidadController;
+use App\Http\Controllers\User\CatalogoController;
 use App\Http\Controllers\User\CategoriaController;
-use App\Http\Controllers\User\EntidadesController;
 use App\Http\Controllers\User\PublicidadController;
 use App\Http\Controllers\User\RegistroEmpresaController;
 use App\Http\Controllers\User\RegistroServicioController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,20 +37,20 @@ Route::get('/publicidad-click/{id}', [PublicidadController::class, 'publicidadcl
 // Categorias
 Route::get('/tag', [CategoriaController::class, 'tag']);
 Route::get('/categoria/{slug}', [CategoriaController::class, 'categoria']);
-Route::get('/categoria-registro/{slug}', [CategoriaController::class, 'categoriaregistro']);
+Route::get('/categoria-registro/{id}', [CategoriaController::class, 'categoriaregistro']);
 Route::get('/categoria-destacado', [CategoriaController::class, 'categoriadestacado']);
-Route::get('/categoria-concepto/{slug}', [CategoriaController::class, 'categoriaconcepto']);
+Route::get('/categoria-concepto/{id}', [CategoriaController::class, 'categoriaconcepto']);
 Route::get('/categoria-click/{id}', [CategoriaController::class, 'categoriaclick']);
 
 // Catalogo
-Route::get('/catalogo/{slug}', [CuentaController::class, 'catalogocategoria']);
-Route::get('/catalogo-concepto/{id}', [CuentaController::class, 'catalogoconcepto']);
+Route::get('/catalogo/{slug}', [CatalogoController::class, 'catalogocategoria']);
+Route::get('/catalogo-concepto/{slug}', [CatalogoController::class, 'catalogoconcepto']);
 
 // Cuenta
 Route::get('/cuenta/{slug}', [CuentaController::class, 'cuenta']);
 
 // Entidad
-Route::get('/entidades', [EntidadesController::class, 'entidades']);
+Route::get('/entidad', [EntidadController::class, 'entidad']);
 
 // Registro
 Route::post('/registro-servicio', [RegistroServicioController::class, 'guardar']);

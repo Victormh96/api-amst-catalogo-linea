@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('imagen');
             $table->integer('click');
-            $table->string('tags');
+            $table->string('tag');
             $table->boolean('estado');
             $table->unsignedBigInteger('id_categoria');
             $table->foreign('id_categoria')->references('id')->on('categoria')->onDelete('cascade');

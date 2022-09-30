@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class EntidadesController extends Controller
+class EntidadController extends Controller
 {
     public function entidades()
     {

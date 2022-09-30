@@ -16,7 +16,7 @@ class DetalleConceptoSeeder extends Seeder
             'imagen' => ('concepto/paseo-el-carmen.png'),
             'click' => 0,
             'slug' => Str::slug('paseo-el-carmen'),
-            'tags' => 'paseo,carmen,concepcion,vida nocturna',
+            'tag' => 'paseo,carmen,concepcion,vida nocturna',
             'estado' => true,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -27,7 +27,7 @@ class DetalleConceptoSeeder extends Seeder
             'imagen' => ('concepto/turismo-cultura.png'),
             'click' => 0,
             'slug' => Str::slug('turismo-cultura'),
-            'tags' => 'turismo,cultura,turistear',
+            'tag' => 'turismo,cultura,turistear',
             'estado' => true,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

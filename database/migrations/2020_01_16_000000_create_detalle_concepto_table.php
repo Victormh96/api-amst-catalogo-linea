@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('imagen');
             $table->integer('click');
             $table->string('slug');
-            $table->string('tags');
+            $table->string('tag');
             $table->boolean('estado');
             $table->timestamps();
         });

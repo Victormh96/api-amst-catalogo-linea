@@ -27,7 +27,7 @@ return new class extends Migration
             $table->boolean('local')->nullable()->default(false);
             $table->boolean('servicio_domicilio')->nullable()->default(false);
             $table->boolean('verificado')->default(false);
-            $table->string('tags')->nullable();
+            $table->string('tag')->nullable();
             $table->boolean('estado')->default(false);
             $table->unsignedBigInteger('id_genero')->nullable();
             $table->foreign('id_genero')->references('id')->on('genero')->onDelete('cascade');

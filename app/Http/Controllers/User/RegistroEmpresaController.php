@@ -49,7 +49,7 @@ class RegistroEmpresaController extends Controller
                 $registro->horario = $request->horario;
                 $registro->local = true;
                 $registro->servicio_domicilio = $request->servicioDomicilio;
-                $registro->tags = $request->tags;
+                $registro->tag = $request->tag;
 
                 if($request->logo):
                     $ruta_logo = $request['logo']->store('logo','public');

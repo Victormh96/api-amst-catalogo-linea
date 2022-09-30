@@ -11,7 +11,7 @@ class CategoriaController extends Controller
     public function tag()
     {
         try {
-
+ 
             $tag = DB::select(DB::raw("exec SP_OBTENER_RUBROS"));  
 
             return response()->json([$tag, 'message' => 'Listado Tag'], 200);
@@ -38,12 +38,12 @@ class CategoriaController extends Controller
         }
     }
 
-    public function categoriaregistro($id_categoria)
+    public function categoriaregistro($id)
     {
         try {
 
             $rubro = DB::select(DB::raw("exec SP_OBTENER_RUBROS_PARA_REGISTRARSE :id_categoria"), [
-                ':id_categoria' => $id_categoria
+                ':id_categoria' => $id
             ]);
 
             return response()->json([$rubro, 'message' => 'Listado Categoria'], 200);
@@ -68,12 +68,12 @@ class CategoriaController extends Controller
         }   
     }
 
-    public function categoriaconcepto($slug)
+    public function categoriaconcepto($id)
     {
         try {
 
             $concepto = DB::select(DB::raw("exec SP_OBTENER_RUBROS_CONCEPTO :id_concepto"), [
-                ':id_concepto' => $slug
+                ':id_concepto' => $id
             ]);
 
             return response()->json([$concepto, 'message' => 'Listado Destacado'], 200);

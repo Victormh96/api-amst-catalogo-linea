@@ -12,14 +12,14 @@ class CategoriaSeeder extends Seeder
     public function run()
     {
         DB::table('categoria')->insert([
-            'nombre_categoria' => 'Servicio Profesional',
+            'nombre_categoria' => 'Servicios Profesionales',
             'slug' => Str::slug('servicios-profesionales'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table('categoria')->insert([
-            'nombre_categoria' => 'Empresa',
+            'nombre_categoria' => 'Empresas',
             'slug' => Str::slug('empresas'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
