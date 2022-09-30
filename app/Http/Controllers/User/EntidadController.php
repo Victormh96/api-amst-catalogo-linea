@@ -8,13 +8,13 @@ use App\Http\Controllers\Controller;
 
 class EntidadController extends Controller
 {
-    public function entidades()
+    public function entidad()
     {
         try {
 
-            $entidades = DB::select(DB::raw("exec SP_OBTENER_ENTIDADES"));  
+            $entidad = DB::select(DB::raw("exec SP_OBTENER_ENTIDADES"));  
 
-            return response()->json([$entidades, 'message' => 'Entidades'], 200);
+            return response()->json([$entidad, 'message' => 'Entidades'], 200);
                 
         } catch(\Exception $e) {
 
