@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class ConceptoController extends Controller
+class ConceptoVController extends Controller
 {
     public function concepto()
     {
