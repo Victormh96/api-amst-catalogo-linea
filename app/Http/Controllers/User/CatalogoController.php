@@ -53,10 +53,13 @@ class CatalogoController extends Controller
 
             $cuenta = Cuenta::where('estado', true)
             ->whereIn('id', $concepto->pluck('id_cuenta'))
-            ->with(['servicio.rubro', 'contacto'])
+            ->with(['servicio.rubro'])
             ->with('concepto', function ($query) use ($concepto) {
                 $query->where('id_detalle_concepto', $concepto->pluck('id_detalle_concepto'));
             })
+            ->with('contacto', function ($query) {
+                $query->where('id_detalle_contacto', 5);
+            })   
             ->orderBy('verificado', 'desc')
             ->inRandomOrder()
             ->get();       
