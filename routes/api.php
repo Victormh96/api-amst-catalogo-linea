@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// User
 use App\Http\Controllers\User\CuentaController;
 use App\Http\Controllers\User\InicioController;
 use App\Http\Controllers\User\PortadaController;
@@ -11,6 +13,11 @@ use App\Http\Controllers\User\CategoriaController;
 use App\Http\Controllers\User\PublicidadController;
 use App\Http\Controllers\User\RegistroEmpresaController;
 use App\Http\Controllers\User\RegistroServicioController;
+
+// Verify
+
+use App\Http\Controllers\Verify\ConceptoController;
+use App\Http\Controllers\Verify\CuentaVController;
 
 
 /*
@@ -48,6 +55,11 @@ Route::get('/catalogo-concepto/{slug}', [CatalogoController::class, 'catalogocon
 
 // Cuenta
 Route::get('/cuenta/{slug}', [CuentaController::class, 'cuenta']);
+Route::get('/nombre-cuenta/{estado}', [CuentaController::class, 'nombrecuenta']);
+
+//Concepto
+Route::get('/concepto', [ConceptoController::class, 'conceptos']);
+Route::post('/registro-concepto', [ConceptoController::class, 'guardar']);
 
 // Entidad
 Route::get('/entidad', [EntidadController::class, 'entidad']);
