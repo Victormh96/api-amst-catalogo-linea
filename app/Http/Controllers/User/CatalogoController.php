@@ -53,7 +53,7 @@ class CatalogoController extends Controller
 
             $cuenta = Cuenta::where('estado', true)
             ->whereIn('id', $concepto->pluck('id_cuenta'))
-            ->with(['servicio.rubro'])
+            ->with(['servicio.rubro', 'contacto'])
             ->with('concepto', function ($query) use ($concepto) {
                 $query->where('id_detalle_concepto', $concepto->pluck('id_detalle_concepto'));
             })
