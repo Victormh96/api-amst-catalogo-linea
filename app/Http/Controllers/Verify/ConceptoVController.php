@@ -31,7 +31,7 @@ class ConceptoVController extends Controller
 
             // Validation 
             $data = Validator::make($request->all(), [
-                'id_detalle_concepto' => 'unique:concepto,id_detalle_concepto,NULL,id,id_cuenta,'.request('id_cuenta')
+                'idConcepto' => 'unique:concepto,id_detalle_concepto,NULL,id,id_cuenta,'.request('cuenta')
             ]);
 
             if ($data->fails()):
@@ -45,8 +45,8 @@ class ConceptoVController extends Controller
                 $registro = new Concepto();
                 $registro->latitud= $request->latitud;
                 $registro->longitud =$request->longitud;
-                $registro->id_detalle_concepto = $request->id_detalle_concepto;
-                $registro->id_cuenta = $request->id_cuenta;
+                $registro->id_detalle_concepto = $request->idConcepto;
+                $registro->id_cuenta = $request->cuenta;
                 $registro->save();
 
                 return response()->json(['message' => 'Registro Guardado'], 200);
