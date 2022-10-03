@@ -12,7 +12,6 @@ use App\Http\Controllers\User\PublicidadController;
 use App\Http\Controllers\User\RegistroEmpresaController;
 use App\Http\Controllers\User\RegistroServicioController;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
