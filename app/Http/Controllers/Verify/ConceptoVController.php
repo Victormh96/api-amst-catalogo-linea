@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Verify;
 
-use App\Models\DetalleConcepto;
 use App\Models\Concepto;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\DetalleConcepto;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class ConceptoController extends Controller
 {
-    public function conceptos()
+    public function concepto()
     {
         try {
 
@@ -29,14 +29,14 @@ class ConceptoController extends Controller
     {
         try {
 
-        //Validando 
-        $data = Validator::make($request->all(), [
-        'id_detalle_concepto' => 'unique:concepto,id_detalle_concepto,NULL,id,id_cuenta,'.request('id_cuenta')
-    ]);
+            // Validation 
+            $data = Validator::make($request->all(), [
+                'id_detalle_concepto' => 'unique:concepto,id_detalle_concepto,NULL,id,id_cuenta,'.request('id_cuenta')
+            ]);
 
-        if ($data->fails()):
-            return response()->json([$data->errors(), 'message' => 'Registro No Guardado'], 400);
-        endif;
+            if ($data->fails()):
+                return response()->json([$data->errors(), 'message' => 'Registro No Guardado'], 400);
+            endif;
 
             // Transaccion
             DB::transaction(function () use ($request) { 
@@ -57,5 +57,4 @@ class ConceptoController extends Controller
             return response()->json([$e], 400);
         }
     }
-
 }
