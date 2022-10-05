@@ -70,9 +70,9 @@ Route::group(['as'=>'user.'], function(){
 
 Route::group(['as'=>'verify.'], function(){
     // Cuenta
-    Route::get('/verify/estado-cuenta/{estado}', [CuentaVController::class, 'estadocuenta']);
+    //Route::get('/verify/estado-cuenta/{estado}', [CuentaVController::class, 'estadocuenta']);
 
     //Concepto
-    Route::get('/verify/concepto', [ConceptoVController::class, 'concepto']);
-    Route::post('/verify/registro-concepto', [ConceptoVController::class, 'guardar']);
+    //Route::get('/verify/concepto', [ConceptoVController::class, 'concepto']);
+    //Route::post('/verify/registro-concepto', [ConceptoVController::class, 'guardar']);
 });
