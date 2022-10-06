@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('servicio', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('anios_experiencia');
             $table->unsignedBigInteger('id_rubro');
             $table->foreign('id_rubro')->references('id')->on('rubro')->onDelete('cascade');
