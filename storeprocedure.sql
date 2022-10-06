@@ -1,10 +1,6 @@
-USE [DBCATBWEB]
-GO
-
 --
 -- Definition for stored procedure SP_AUMENTAR_CLICK_PUBLICIDAD : 
 --
-
 GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
@@ -51,6 +47,70 @@ CREATE PROCEDURE [dbo].[SP_BUSQUEDA_FALLIDA] @busqueda varchar(100) AS BEGIN
            [busqueda], [created_at] )
      VALUES
            (@busqueda, getdate() )
+END
+GO
+
+--
+-- Definition for stored procedure SP_OBTENER_CONCEPTOS : 
+--
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+    -- =============================================
+CREATE PROCEDURE [dbo].[SP_OBTENER_CONCEPTOS] AS BEGIN
+SELECT [id]
+      ,[descripcion]
+      ,[imagen]
+      ,[click]
+      ,[slug]
+      ,[tag]
+  FROM [dbo].[detalle_concepto]
+  WHERE [estado] = 'true'
+END
+GO
+
+--
+-- Definition for stored procedure SP_OBTENER_ENTIDADES : 
+--
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+    -- =============================================
+CREATE PROCEDURE [dbo].[SP_OBTENER_ENTIDADES] AS BEGIN
+SELECT [id]
+      ,[nombre_entidad]
+      ,[created_at]
+      ,[updated_at]
+  FROM [dbo].[entidad]
+  WHERE [ID] <> 1
+END
+GO
+
+--
+-- Definition for stored procedure SP_OBTENER_NOMBRE_CUENTA : 
+--
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+    -- =============================================
+CREATE PROCEDURE [dbo].[SP_OBTENER_NOMBRE_CUENTA] @estado varchar(30) AS BEGIN
+SELECT C.[id],
+    C.[nombre_cuenta]
+FROM [dbo].[cuenta] AS C
+WHERE C.estado = @estado
+ORDER BY C.[nombre_cuenta] ASC
 END
 GO
 
@@ -126,6 +186,43 @@ WHERE R.[estado] = 'true' AND (SELECT COUNT(S.[id_rubro])
         FROM servicio AS S
         WHERE S.[id_rubro] = R.[id]) > 0
 ORDER BY R.[nombre_rubro]
+END
+GO
+
+--
+-- Definition for stored procedure SP_OBTENER_RUBROS_CONCEPTO : 
+--
+GO
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+
+    -- Create date: <16 de septiembre de 2022>
+    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
+    -- =============================================
+CREATE PROCEDURE [dbo].[SP_OBTENER_RUBROS_CONCEPTO] @id_concepto varchar(30) AS BEGIN
+SELECT R.[id],
+    R.[nombre_rubro],
+    R.[slug],
+    R.[imagen],
+    R.[click],
+    R.[tag],
+	0 As checked,
+    R.[estado],
+    R.[id_categoria],
+    R.[created_at],
+    R.[updated_at]
+FROM [dbo].[rubro] AS R
+WHERE R.[estado] = 'true' AND (
+        SELECT COUNT(S.[id_rubro])
+        FROM servicio AS S
+        WHERE S.[id_rubro] = R.[id] AND ( SELECT COUNT(C.[id_cuenta]) FROM concepto AS C
+										  INNER JOIN detalle_concepto AS DC ON C.[id_detalle_concepto] = DC.[id]
+										  WHERE C.[id_cuenta] = S.[id_cuenta] AND DC.[slug] = @id_concepto) > 0 
+    ) > 0 
+
+ORDER BY R.[nombre_rubro] ASC
+
 END
 GO
 
@@ -244,55 +341,3 @@ WHERE R.[estado] = 'true' AND C.[slug] = @slug AND (
 ORDER BY R.[nombre_rubro]
 END
 GO
-
-
-/****** Object:  StoredProcedure [dbo].[SP_OBTENER_PORTADAS]    Script Date: 26/9/2022 13:55:15 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-    -- Create date: <16 de septiembre de 2022>
-    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
-    -- =============================================
-CREATE PROCEDURE [dbo].[SP_OBTENER_ENTIDADES] AS BEGIN
-SELECT [id]
-      ,[nombre_entidad]
-      ,[created_at]
-      ,[updated_at]
-  FROM [dbo].[entidad]
-  WHERE [ID] <> 1
-END
-
-
-/****** Object:  StoredProcedure [dbo].[SP_OBTENER_RUBROS_CONCEPTO]    Script Date: 30/9/2022 08:17:26 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-    -- Create date: <16 de septiembre de 2022>
-    -- Description:	<Procedimiento almacenado que retorna los rubros de una categoria especifica que tengan al menos una cuenta registrada>
-    -- =============================================
-CREATE PROCEDURE [dbo].[SP_OBTENER_RUBROS_CONCEPTO] @id_concepto varchar(30) AS BEGIN
-SELECT R.[id],
-    R.[nombre_rubro],
-    R.[slug],
-    R.[imagen],
-    R.[click],
-    R.[tag],
-    R.[estado],
-    R.[id_categoria],
-    R.[created_at],
-    R.[updated_at]
-FROM [dbo].[rubro] AS R
-WHERE R.[estado] = 'true' AND (
-        SELECT COUNT(S.[id_rubro])
-        FROM servicio AS S
-        WHERE S.[id_rubro] = R.[id] AND ( SELECT COUNT(C.[id_cuenta]) FROM concepto AS C
-										  INNER JOIN detalle_concepto AS DC ON C.[id_detalle_concepto] = DC.[id]
-										  WHERE C.[id_cuenta] = S.[id_cuenta] AND DC.[slug] = @id_concepto) > 0 
-    ) > 0 
-
-ORDER BY R.[nombre_rubro] ASC
-
-END
